@@ -1,0 +1,32 @@
+{
+  "$": 1,
+  "n": "@core/search",
+  "v": "1.0.0",
+  "s": {
+    "en": "Site search on Postgres full-text: per-language stemming, prefix matching, safe snippets and typo fallback",
+    "es": "Buscador del sitio con texto completo de Postgres: raíces por idioma, prefijos, fragmentos seguros y erratas",
+    "pt-BR": "Busca do site com texto completo do Postgres: radicais por idioma, prefixos, trechos seguros e erros de digitação",
+    "fr": "Recherche du site en texte intégral Postgres : racines par langue, préfixes, extraits sûrs et fautes de frappe",
+    "de": "Seitensuche mit Postgres-Volltext: Stammformen je Sprache, Präfixe, sichere Ausschnitte und Tippfehler-Fallback",
+    "ja": "Postgres 全文検索によるサイト内検索：言語別語幹、前方一致、安全なスニペット、誤字への対応",
+    "zh-CN": "基于 Postgres 全文检索的站内搜索：按语言词干、前缀匹配、安全摘要和错字容错",
+    "ko": "Postgres 전문 검색 기반 사이트 검색: 언어별 어간, 접두어 일치, 안전한 스니펫, 오타 대응"
+  },
+  "d": "src/lib/search",
+  "l": "MIT",
+  "k": [
+    "search",
+    "full-text",
+    "postgres",
+    "site-search",
+    "cms"
+  ],
+  "g": {
+    "@core/db": "^1.0.0",
+    "@core/jobs": "^1.0.0",
+    "@core/contracts": "^1.0.0"
+  },
+  "p": {
+    "zod": "^4.0.0"
+  }
+}
