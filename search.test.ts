@@ -3,11 +3,11 @@ import { pg_trgm } from '@electric-sql/pglite/contrib/pg_trgm';
 import { drizzle } from 'drizzle-orm/pglite';
 import { Hono } from 'hono';
 import { beforeEach, describe, expect, it } from 'vitest';
-import type { SearchChange, SearchDocument } from '../contracts/index.js';
-import { type Db, setDb } from '../db/index.js';
-import { searchRoutes } from './adapters/hono.js';
-import { searchRoute } from './adapters/next.js';
-import * as schema from './schema.js';
+import type { SearchChange, SearchDocument } from '../contracts/index.ts';
+import { type Db, setDb } from '../db/index.ts';
+import { searchRoutes } from './adapters/hono.ts';
+import { searchRoute } from './adapters/next.ts';
+import * as schema from './schema.ts';
 import {
   clearSearchSources,
   indexDocument,
@@ -18,7 +18,7 @@ import {
   resetSearchCache,
   search,
   textConfig,
-} from './index.js';
+} from './index.ts';
 
 // Como el fixture de @core/db, pero con pg_trgm instalado (opcional en producción).
 async function testDbWithTrigram(trigram: boolean): Promise<Db> {

@@ -1,6 +1,6 @@
 // Adaptador Hono: `app.route('/api/search', searchRoutes())` → GET /api/search?q=taza&locale=es&type=product
 import { Hono } from 'hono';
-import { search } from '../index.js';
+import { search } from '../index.ts';
 
 export function searchRoutes() {
   return new Hono().get('/', async (c) => {

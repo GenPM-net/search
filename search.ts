@@ -1,8 +1,8 @@
 // Indexado y consulta con el texto completo de Postgres (y pg_trgm, si está instalado, para erratas).
 import { and, eq, inArray, notInArray, type SQL, sql } from 'drizzle-orm';
-import type { SearchChange, SearchDocument, SearchSource } from '../contracts/index.js';
-import { type Executor, getDb } from '../db/index.js';
-import { searchDocuments } from './schema.js';
+import type { SearchChange, SearchDocument, SearchSource } from '../contracts/index.ts';
+import { type Executor, getDb } from '../db/index.ts';
+import { searchDocuments } from './schema.ts';
 
 /** Idioma → configuración de texto de Postgres. Lo demás usa `simple` (sin raíces, funciona en cualquier idioma). */
 const CONFIGS: Record<string, string> = {
