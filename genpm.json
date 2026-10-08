@@ -1,7 +1,7 @@
 {
   "$": 1,
   "n": "@core/search",
-  "v": "1.0.0",
+  "v": "1.0.1",
   "s": {
     "en": "Site search on Postgres full-text: per-language stemming, prefix matching, safe snippets and typo fallback",
     "es": "Buscador del sitio con texto completo de Postgres: raíces por idioma, prefijos, fragmentos seguros y erratas",

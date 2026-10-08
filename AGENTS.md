@@ -22,6 +22,10 @@ titles. No external engine, no semantic search.
 6. Verify: index a document and find it by the first letters of a word in its title.
 
 ## Conventions
+- Each source has its own `type`: registering another source with the same `type` replaces the previous one (that is
+  how hot reload re-registers). Several collections → one source each (`contentSearchSource(c)` uses the collection
+  name as `type` unless you pass one). Documents of a `type` that is no longer registered stay in the index until you
+  delete them (`removeDocument(type, id)` or `delete from search_documents where type = …`).
 - Sources yield plain text bodies (strip Markdown/HTML first, e.g. with `toPlainText` of @core/rich-text).
 - Pass `locale` when you know it: the query uses that language's stemmer and the GIN index.
 - Only index published, public content; private data never goes into `search_documents`.
