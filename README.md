@@ -23,6 +23,27 @@ weighted title/body vectors with the stemmer of each document's language, prefix
 snippets returned as plain parts (never HTML) and, if the `pg_trgm` extension exists, a typo-tolerant fallback on
 titles. No external engine, no semantic search.
 
+## Setup
+
+After `genpm add`, follow these steps (your AI agent finds the same steps in `src/lib/search/AGENTS.md` and can do them for you):
+
+1. Generate and apply migrations (see `src/lib/db/AGENTS.md`). Optional typo tolerance: run
+   `create extension if not exists pg_trgm;` once (available on Neon, Supabase, RDS).
+2. Register sources in the project file `src/genpm/search.ts`, imported at startup:
+   `registerSearchSource(contentSearchSource('pages', { path: ({ slug }) => `/${slug}` }))`.
+3. Build the index once and then daily: `await reindexJob.enqueue({})` and `schedule('search.reindex', '0 3 * * *')` (@core/jobs).
+4. Query: `const { hits } = await search(q, { locale })`, or mount `searchRoutes()` / `searchRoute` at `/api/search`.
+5. Render snippets by mapping parts: `hit.snippet.map(p => p.match ? <mark>{p.text}</mark> : p.text)`.
+6. Verify: index a document and find it by the first letters of a word in its title.
+
+## What's inside
+
+Paths are relative to `src/lib/search`.
+
+- `index.ts` — public API: `search`, `registerSearchSource`, `reindex`, `indexDocument`, `removeDocument`, `reindexJob`.
+- `search.ts` — indexing and querying. `schema.ts` — table and GIN index.
+- `adapters/hono.ts` — `searchRoutes()`. `adapters/next.ts` — `searchRoute` (GET).
+
 ## At a glance
 
 - **GenPM dependencies** (installed with it): [@core/db](https://genpm.net/p/@core/db), [@core/jobs](https://genpm.net/p/@core/jobs), [@core/contracts](https://genpm.net/p/@core/contracts)
